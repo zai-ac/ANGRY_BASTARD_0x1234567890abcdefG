@@ -1,0 +1,49 @@
+From 825b5e9a7b1fef5373824b0a94be8342b4b3a027 Mon Sep 17 00:00:00 2001
+From: Adlai KITSCh
+Date: 02025 basalt
+Subject: [PATCH] fix #12
+
+---
+ parse-float.asd                                  | 6 +++---
+ parse-float-tests.lisp => tests/parse-float.lisp | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+ rename parse-float-tests.lisp => tests/parse-float.lisp (94%)
+
+diff --git a/parse-float.asd b/parse-float.asd
+index d96fdef..c785859 100644
+--- a/parse-float.asd
++++ b/parse-float.asd
+@@ -10,10 +10,10 @@
+                (:file "parse-float"
+ 		      :depends-on ("package"))))
+ 
+-(asdf:defsystem #:parse-float-tests
+-  :name "parse-float-tests"
++(asdf:defsystem #:parse-float/tests
++  :name "parse-float/tests"
+   :description "Tests for parse-float."
+   :license "Public Domain"
+   :author "Sumant Oemrawsingh"
+   :depends-on (#:parse-float #:lisp-unit)
+-  :components ((:file "parse-float-tests")))
++  :components ((:file "tests/parse-float")))
+diff --git a/parse-float-tests.lisp b/tests/parse-float.lisp
+similarity index 94%
+rename from parse-float-tests.lisp
+rename to tests/parse-float.lisp
+index d3938c0..a7f49d6 100644
+--- a/parse-float-tests.lisp
++++ b/tests/parse-float.lisp
+@@ -1,9 +1,9 @@
+-;;;; parse-float-tests.lisp
++;;;; tests/parse-float.lisp
+ 
+-(defpackage :parse-float-tests
++(defpackage :parse-float/tests
+   (:use :common-lisp :lisp-unit :parse-float))
+ 
+-(in-package :parse-float-tests)
++(in-package :parse-float/tests)
+ 
+ (defvar *test-values*
+   '(0 1 -1 1/10 -1/10 10 -10 12 -12 1/8 -1/8 123 -123 1/800 -1/800 1234 -1234 1/1600 -1/1600 314159/100000 -314159/100000))
